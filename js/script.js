@@ -1,55 +1,85 @@
-const button = document.getElementsByClassName("btn");
-const clear = document.getElementById("clear");
-const bracket = document.getElementsByClassName("bracket");
-const percentage = document.getElementById("percentage");
-const division = document.getElementById("division");
-const multplication = document.getElementById("multplication");
-const subtraction= document.getElementById("subtraction");
-const addition = document.getElementById("addition");
-const addsub = document.getElementsByClassName("addsub");
-const equal = document.getElementById("equal");
-const keybaord = document.getElementById("keybaord");
+const display = document.getElementById("display");
 const backspace = document.getElementById("backspace");
+const clear = document.getElementById("clear");
+const bracket = document.getElementById("bracket");
+const percent = document.getElementById("percent");
+const division = document.getElementById("division");
+const button = document.getElementsByClassName("btn");
+const product = document.getElementById("product");
+const sub = document.getElementById("sub");
+const add = document.getElementById("add");
+const equal = document.getElementById("equal");
 
-
-
-for (let i = 0; i<button.length; i++){
-  button[i].addEventListener("click", function(){
-    keybaord.value = keybaord.value+ button[i].innerText;
-  })
+for (let i = 0; i < button.length; i++) {
+    button[i].addEventListener("click", function() {
+        display.value += button[i].innerText;
+    });
 }
 
+clear.addEventListener("click", function(){
+    display.value = ""
+})
+
+bracket.addEventListener("click", function() {
+    let value = display.value;
+
+    // Count number of ( and )
+    let openBrackets = (value.match(/\(/g) || []).length;
+    let closeBrackets = (value.match(/\)/g) || []).length;
+
+    if (openBrackets === closeBrackets) {
+        // Insert opening bracket
+        display.value += "(";
+    } else {
+        // Insert closing bracket
+        display.value += ")";
+    }
+});
 
 
 backspace.addEventListener("click", function(){
-  keybaord.value = keybaord.value.slice(0, -1)
+    display.value = display.value.slice(0, -1);
 })
 
-percentage.addEventListener("click", function(){
-  keybaord.value = (keybaord.value)*(1/100) +"%"
-})
-
-clear.addEventListener("click", function(){
-  keybaord.value = ""
+percent.addEventListener("click", function(){
+    display.value = display.value * (1/100) +"%"
 })
 
 division.addEventListener("click", function(){
-  keybaord.value = keybaord.value + "/" + "";
+    display.value = display.value + "/";
 })
 
-multplication.addEventListener("click", function(){
-  keybaord.value = keybaord.value + "*";
+product.addEventListener("click", function(){
+    display.value = display.value + "*";
+})
+sub.addEventListener("click", function(){
+    display.value = display.value + "-";
 })
 
-subtraction.addEventListener("click", function(){
-  keybaord.value = keybaord.value + "-";
+add.addEventListener("click", function(){
+    display.value = display.value + "+";
 })
 
-addition.addEventListener("click", function(){
-  keybaord.value = keybaord.value + "+";
-})
 
 equal.addEventListener("click", function(){
-keybaord.value =eval(keybaord.value)
-
+    display.value = eval(display.value)
 })
+
+const addsub = document.querySelector(".addsub");
+
+addsub.addEventListener("click", function() {
+
+    let value = display.value;
+
+    if (value === "") return;
+
+    // If already negative, remove minus
+    if (value.startsWith("-")) {
+        display.value = value.substring(1);
+    } 
+    // Otherwise make it negative
+    else {
+        display.value = "-" + value;
+    }
+
+});
