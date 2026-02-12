@@ -23,7 +23,7 @@ background-color: rgb(29, 29, 29);
 }
 
 input{
-    width: 450px;
+   
     height: 120px;
     border: none;
     outline: none;
@@ -44,7 +44,6 @@ input{
 }
 body{
     background-color: black;
-        max-width: 450px;
 }
 
 #clear {
@@ -76,3 +75,6 @@ body{
     color: rgb(107, 226, 107);
 }
 
+.mini{
+    width: 450px;
+}
