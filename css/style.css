@@ -3,7 +3,7 @@
     grid-template-columns: repeat(4, 1fr);
     max-width: 450px;
     place-items: center;
-   margin-top: 10px;
+   margin-top: 30px;
    
 }
 
@@ -38,12 +38,13 @@ input{
     margin-right: 30px;
     height: 40px;
     border-bottom: 1px solid gray;
-    padding-bottom: 30px;
+    padding-bottom: 50px;
     background-color: black;
  
 }
 body{
     background-color: black;
+        max-width: 450px;
 }
 
 #clear {
@@ -74,3 +75,4 @@ body{
 #equal {
     color: rgb(107, 226, 107);
 }
+
